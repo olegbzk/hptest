@@ -1,15 +1,12 @@
 sudo: required
 language: python
-python:
-  - 2.7
-  - 3.5
 
 services:
   - docker
 
 before_install:
 - docker pull haproxy:1.5
-- docker run -it --rm --name haproxy-syntax-check haproxy:1.5 haproxy -c -f /usr/local/etc/haproxy/haproxy.cfg
+- docker run -it --rm --name haproxy-syntax-check -v /:/tmp haproxy:1.5 haproxy -c -f /tmp/haproxy.cfg
 - docker ps -a
 script:
 - docker ps -a
