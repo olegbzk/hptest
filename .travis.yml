@@ -7,4 +7,4 @@ services:
 before_install:
 - docker pull haproxy
 script:
-- docker run -it --rm --name haproxy-syntax-check -v haproxy.cfg:/tmp/haproxy.cf haproxy haproxy -c -f /tmp/haproxy.cfg ; echo $?
+- docker run -it --rm --name haproxy-syntax-check -v haproxy.cfg:/tmp/haproxy.cf haproxy  /bin/sh -c 'exit 3' ; echo $?
